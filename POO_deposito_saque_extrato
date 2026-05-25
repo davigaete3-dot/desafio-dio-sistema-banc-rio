@@ -1,1 +1,42 @@
+depositos = []
+saques = []
+class Count:
+    def __init__(self,nome,idade,valor):
+        self.nome = nome 
+        self.idade = idade 
+        self.valor = valor 
+    def deposito(self,quantidade):
+        self.quantidade = quantidade
+        self.valor += quantidade
+        depositos.append(quantidade)
+    def saque(self,quantidade):
+        self.quantidade = quantidade
+        if self.valor> quantidade:
+            self.valor -= quantidade
+            saques.append(quantidade)
+        else:
+             print('valor de saque maior do que o valor na conta ')
+
+conta_teste= Count('conta de teste ', 20, 200)
+while True:
+    print('escolha uma das opções:')
+    print('1-depositar')
+    print('2-sacar')
+    print('3-extrato')
+    print('4-sair')
+    choice = input()
+    if int(choice) == 1:
+        valor = float(input('quanto deseja depositar? '))
+        conta_teste.deposito(valor)
+    elif int(choice) ==2:
+        valor = float(input('quanto deseja depositar? '))
+        conta_teste.saque(valor)
+    elif int(choice) ==3:
+        for valor in depositos:
+            print(f'Valores depositados R${valor}')
+        for i in saques:
+            print(f' Valores sacados R${i}')
+        print(f'Valor atual da conta R${conta_teste.valor}')
+    else:
+        break
 
